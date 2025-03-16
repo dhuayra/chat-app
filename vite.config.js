@@ -14,4 +14,9 @@ export default defineConfig({
             ],
         }),
     ],
+    resolve: {
+        alias: {
+            'pusher-js': 'pusher-js/dist/web/pusher.js',
+        },
+    },
 });

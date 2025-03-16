@@ -6,6 +6,7 @@ use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Events\MessageSent;
 
 class MessageController extends Controller
 {
@@ -88,6 +89,8 @@ class MessageController extends Controller
         $message->to_user_id = $contactId;
         $message->message = $request->message;
         $message->save();
+
+        broadcast(new MessageSent($message));
   
         return back();
     }
